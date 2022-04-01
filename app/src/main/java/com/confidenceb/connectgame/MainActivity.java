@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,9 +42,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                     //Log.i("TAG", "gamewinner: called");
                     gameState = false;
+                    Button Replaybtn = (Button)findViewById(R.id.ReplayBtn);
+                    TextView showWinner = (TextView)findViewById(R.id.showWinner);
                     Log.i("INFO", gameWinner + " has won");
-                    Toast.makeText(this, gameWinner + " has won", Toast.LENGTH_LONG).show();
-                    Log.i("TAG", "gamewinner: announced");
+                    showWinner.setText(gameWinner + " has won");
+                    showWinner.setVisibility(View.VISIBLE);
+                    Log.i("TAG", "make reply button visible now");
+                    Replaybtn.setVisibility(View.VISIBLE);
                 }
             }
         }
