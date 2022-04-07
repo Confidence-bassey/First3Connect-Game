@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +54,28 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    public void rePlayGame(View view){
+        Button Replaybtn = (Button)findViewById(R.id.ReplayBtn);
+        TextView showWinner = (TextView)findViewById(R.id.showWinner);
+        Replaybtn.setVisibility(View.INVISIBLE);
+        showWinner.setVisibility(View.INVISIBLE);
+
+        GridLayout gameCell = (GridLayout)findViewById(R.id.gameBoard);
+        //loop through the grid layout
+        for(int i = 0; i<gameCell.getChildCount(); i++){
+            //get the gridlayout children
+            ImageView counter = (ImageView) gameCell.getChildAt(i);
+            //remove the image resources from the grid children
+            counter.setImageDrawable(null);  //makes the counters empty
+        }
+        for(int i = 0; i<gameStatus.length; i++){
+            gameStatus[i] = 2;
+        }
+        activePlayer = 0;
+        gameState = true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
